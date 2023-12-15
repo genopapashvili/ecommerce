@@ -11,8 +11,18 @@ import {NgOptimizedImage} from "@angular/common";
 import {LandingMenuComponent} from './features/components/menu/landing-menu/landing-menu.component';
 import {HomeMenuComponent} from './features/components/menu/home-menu/home-menu.component';
 import {NgIconComponent, provideIcons} from "@ng-icons/core";
-import {matContactSupport, matInventory2, matLogIn, matShop} from "@ng-icons/material-icons/baseline";
-import { ShopComponent } from './features/main/shop/shop.component';
+import {
+  matContactSupport,
+  matInventory2,
+  matLogIn, matPayment, matReviews,
+  matShop, matShoppingBasket,
+  matStarBorder,
+  matStarHalf
+} from "@ng-icons/material-icons/baseline";
+import {ShopComponent} from './features/main/shop/shop.component';
+import {RateComponent} from './shared/components/rate/rate.component';
+import {matStarOutline} from "@ng-icons/material-icons/outline";
+import { CardComponent } from './shared/components/card/card.component';
 
 
 @NgModule({
@@ -24,7 +34,9 @@ import { ShopComponent } from './features/main/shop/shop.component';
     LogoComponent,
     LandingMenuComponent,
     HomeMenuComponent,
-    ShopComponent
+    ShopComponent,
+    RateComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +45,18 @@ import { ShopComponent } from './features/main/shop/shop.component';
     NgIconComponent
   ],
 
-  providers: [provideIcons({matLogIn,matContactSupport,matShop,matInventory2})],
+  providers: [provideIcons({
+    matLogIn,
+    matContactSupport,
+    matShop,
+    matInventory2,
+    matStarBorder,
+    matStarHalf,
+    matStarOutline,
+    matReviews,
+    matShoppingBasket,
+    matPayment
+  })],
 
   bootstrap: [AppComponent]
 })
