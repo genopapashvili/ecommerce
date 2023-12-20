@@ -31,5 +31,5 @@ function getAverageRate(rates: number[]) {
   // this is an easy way to count average rates
   return rates
     .map(it => it > 5 ? 5 : it)
-    .reduce((sum, c) => sum += c, 0) / 5
+    .reduce((sum, c) => sum += c, 0) / rates.length
 }
