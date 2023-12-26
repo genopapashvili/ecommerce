@@ -23,6 +23,7 @@ import {ShopComponent} from './features/main/shop/shop.component';
 import {RateComponent} from './shared/components/rate/rate.component';
 import {matStarOutline} from "@ng-icons/material-icons/outline";
 import { CardComponent } from './shared/components/card/card.component';
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { CardComponent } from './shared/components/card/card.component';
     CardComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     NgOptimizedImage,
