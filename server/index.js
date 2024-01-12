@@ -1,12 +1,16 @@
 const express = require('express');
 const app = express();
-const port = 3001;
-
+const cors = require('cors');
 const sharp = require('sharp');
 
+const port = 3001;
+const corsOptions = {
+  origin: 'http://localhost:4200',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE'
+};
 const {items} = require("../server/data/items")
 
-
+app.use(cors(corsOptions));
 app.get('/image', async (req, res) => {
   const targetWidth = 100;
   const targetHeight = 100;
@@ -17,13 +21,13 @@ app.get('/image', async (req, res) => {
     const originalHeight = imageInfo.height;
 
     // Calculate center coordinates
-    const left = Math.max(0,Math.floor(originalWidth / 2 - targetWidth / 2));
-    const top =Math.max(0, Math.floor(originalHeight / 2 - targetHeight / 2));
+    const left = Math.max(0, Math.floor(originalWidth / 2 - targetWidth / 2));
+    const top = Math.max(0, Math.floor(originalHeight / 2 - targetHeight / 2));
 
     // Handle resizing if needed
     let resizedImage;
     if (targetWidth < originalWidth || targetHeight < originalHeight) {
-      resizedImage = sharp(imagePath).resize({ width: targetWidth, height: targetHeight });
+      resizedImage = sharp(imagePath).resize({width: targetWidth, height: targetHeight});
     } else {
       resizedImage = sharp(imagePath);
     }
@@ -45,6 +49,10 @@ app.get('/image', async (req, res) => {
     res.status(500).send('Error processing image');
   }
 });
+
+app.get('/categories', (req, res) => {
+  res.send(Array.from(new Set(items.map(it => it.category))))
+})
 
 app.get('/products', (req, res) => {
   res.send(items);

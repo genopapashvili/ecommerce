@@ -9,7 +9,7 @@ export class Optional<T> {
     return new Optional(value);
   }
 
-  public map<R>(func: (value: T | undefined | null) => R) {
+  public map<R>(func: (value: T) => R) {
     if (is(this.value)) {
       return Optional.of(func(this.value))
     }
