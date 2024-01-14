@@ -4,6 +4,11 @@
   margin: 10px
 }
 
+img{
+  width: 16rem;
+  height: 10rem;
+}
+
 .rates-wrapper{
   display: flex;
   flex-direction: row;

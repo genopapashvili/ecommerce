@@ -1,6 +1,7 @@
 module.exports = {
-  items: [
+  products: [
     {
+      id: 1,
       title: "Black Adidas T shirt",
       images: [
         "1.jpg",
@@ -9,7 +10,7 @@ module.exports = {
         "4.jpg"
       ],
       category: "Clothes",
-      prise: 30,
+      price: 30,
       subscribers: [
         {
           fullName: "Genad Papashvili",
@@ -30,6 +31,7 @@ module.exports = {
       ]
     },
     {
+      id: 2,
       title: "High heels",
       images: [
         "1.jpg",
@@ -38,7 +40,7 @@ module.exports = {
         "4.jpg"
       ],
       category: "Shoes",
-      prise: 180.4,
+      price: 180.4,
       subscribers: [
         {
           fullName: "Pikria Papashvili",
@@ -48,13 +50,14 @@ module.exports = {
       ]
     },
     {
+      id: 3,
       title: "Summer Underwear",
       images: [
         "1.jpg",
         "2.jpg"
       ],
       category: "Clothes",
-      prise: 20.9,
+      price: 20.9,
       subscribers: [
         {
           fullName: "Genad Papashvili",
@@ -69,6 +72,7 @@ module.exports = {
       ]
     },
     {
+      id: 4,
       title: "Comfy Woolen Sweater",
       images: ["sweater1.jpg", "sweater2.jpg", "sweater3.jpg"],
       category: "Clothes",
@@ -91,6 +95,7 @@ module.exports = {
       ]
     },
     {
+      id: 5,
       title: "Noise-Cancelling Headphones",
       images: ["headphones1.jpg", "headphones2.jpg", "headphones3.jpg"],
       category: "Electronics",
@@ -114,6 +119,7 @@ module.exports = {
       ]
     },
     {
+      id: 6,
       title: "Ergonomic Office Chair",
       images: ["chair1.jpg", "chair2.jpg", "chair3.jpg"],
       category: "Furniture",
@@ -137,6 +143,7 @@ module.exports = {
       ]
     },
     {
+      id: 7,
       title: "Vegan Leather Tote Bag",
       images: ["tote1.jpg", "tote2.jpg", "tote3.jpg"],
       category: "Accessories",
@@ -160,6 +167,7 @@ module.exports = {
       ]
     },
     {
+      id: 8,
       title: "Cast Iron Skillet",
       images: ["skillet1.jpg", "skillet2.jpg"],
       category: "Kitchen",

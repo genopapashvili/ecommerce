@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {Product} from "../../../utils/types";
 
 @Component({
   selector: 'app-card',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent {
+
+  @Input({required: true})
+  public product!: Product
+
+
+  getFirstImage() {
+    return this.product.images[0]
+  }
 
 }
