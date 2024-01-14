@@ -8,7 +8,7 @@ const corsOptions = {
   origin: 'http://localhost:4200',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE'
 };
-const {items} = require("../server/data/items")
+const {products} = require("../server/data/products")
 
 app.use(cors(corsOptions));
 app.get('/image', async (req, res) => {
@@ -51,11 +51,11 @@ app.get('/image', async (req, res) => {
 });
 
 app.get('/categories', (req, res) => {
-  res.send(Array.from(new Set(items.map(it => it.category))))
+  res.send(Array.from(new Set(products.map(it => it.category))))
 })
 
 app.get('/products', (req, res) => {
-  res.send(items);
+  res.send(products);
 });
 
 app.listen(port, () => {
