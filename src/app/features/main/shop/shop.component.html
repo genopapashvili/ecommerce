@@ -1,5 +1,5 @@
 <div class="row justify-content-center">
   <div class="col-auto" *ngFor="let product of products">
-    <app-card [product]="product"></app-card>
+    <app-card (click)="onProductClick(product.id)" [product]="product"></app-card>
   </div>
 </div>

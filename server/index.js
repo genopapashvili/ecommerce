@@ -11,6 +11,7 @@ const corsOptions = {
 const {products} = require("../server/data/products")
 
 app.use(cors(corsOptions));
+app.use("/assets", express.static('server/assets'));
 app.get('/image', async (req, res) => {
   const targetWidth = 100;
   const targetHeight = 100;
@@ -57,6 +58,21 @@ app.get('/categories', (req, res) => {
 app.get('/products', (req, res) => {
   res.send(products);
 });
+
+app.get("/product/:id", (req, res) => {
+  try {
+    const productId = parseInt(req.params.id);
+    let result = products.find(it => it.id === productId)
+    if (!result) {
+      res.status(404)
+      throw new Error("not found")
+    }
+
+    res.send(result)
+  } catch (e) {
+    res.send(e.message)
+  }
+})
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);

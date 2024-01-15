@@ -1,26 +1,26 @@
 <div class="card app-card">
   <div class="card-img-top d-flex justify-content-center">
-    <!--<img [src]="getFirstImage()" alt="image">-->
-    <ng-icon name="matInventory2" color="#777" size="10rem"></ng-icon>
+    <img [src]="getFirstImage()" alt="image">
+   <!-- <ng-icon name="matInventory2" color="#777" size="10rem"></ng-icon>-->
   </div>
   <div class="card-body">
     <h6 class="card-title">{{product.title}}</h6>
     <div class="rates-wrapper">
-      <app-rate [rates]="[]"></app-rate>
+      <app-rate [rates]="getRates()"></app-rate>
       <div class="review-wrapper">
         {{product.subscribers.length}}
-        <button class="btn btn-sm p-0">
+        <button (click)="onSubscribersClick($event)" class="btn btn-sm p-0">
           <ng-icon name="matReviews" color="#777" size="1.35rem"></ng-icon>
         </button>
       </div>
     </div>
     <h5>${{product.price}}</h5>
     <div class="btn-wrapper d-flex justify-content-end">
-      <button class="m-1 btn btn-outline-light d-flex flex-column align-items-center">
+      <button (click)="onAddItemClick($event)" class="m-1 btn btn-outline-light d-flex flex-column align-items-center">
         <ng-icon name="matShoppingBasket" color="#777" size="2rem"></ng-icon>
         Add to Basket
       </button>
-      <button class="m-1 btn-border btn btn-outline-light d-flex flex-column align-items-center">
+      <button  (click)="onBuyClick($event)" class="m-1 btn-border btn btn-outline-light d-flex flex-column align-items-center">
         <ng-icon name="matPayment" color="#777" size="2rem"></ng-icon>
         BUY NOW
       </button>

@@ -1,12 +1,13 @@
 .app-card{
   width: 18rem;
   height: 25rem;
-  margin: 10px
+  margin: 10px;
+  cursor: pointer;
 }
 
 img{
-  width: 16rem;
-  height: 10rem;
+  max-width: 16rem;
+  max-height: 10rem;
 }
 
 .rates-wrapper{

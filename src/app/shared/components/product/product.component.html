@@ -1,0 +1,11 @@
+<div *ngIf="product">
+  <h3>{{product.title}}</h3>
+  <div class="product-images">
+    <div>
+      <ul>
+        <li *ngFor="let image of product.images"><img [src]="image" alt="images"></li>
+      </ul>
+    </div>
+    <div><img class="image" [src]="product.images[0]" alt="image"></div>
+  </div>
+</div>

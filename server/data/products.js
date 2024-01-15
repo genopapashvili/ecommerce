@@ -34,10 +34,11 @@ module.exports = {
       id: 2,
       title: "High heels",
       images: [
-        "1.jpg",
-        "2.jpg",
-        "3.jpg",
-        "4.jpg"
+        "high-heels.jpg",
+        "high-heels-2.jpg",
+        "high-heels-3.jpg",
+        "high-heels-5.jpg",
+        "high-heels_4.jpg"
       ],
       category: "Shoes",
       price: 180.4,
@@ -53,8 +54,11 @@ module.exports = {
       id: 3,
       title: "Summer Underwear",
       images: [
-        "1.jpg",
-        "2.jpg"
+        "20.jpg",
+        "21.jpg",
+        "22.jpg",
+        "23.jpg",
+        "24.jpg"
       ],
       category: "Clothes",
       price: 20.9,
@@ -74,7 +78,12 @@ module.exports = {
     {
       id: 4,
       title: "Comfy Woolen Sweater",
-      images: ["sweater1.jpg", "sweater2.jpg", "sweater3.jpg"],
+      images: [
+        "11.jpg",
+        "12.jpg",
+        "13.jpg",
+        "10.jpg"
+      ],
       category: "Clothes",
       price: 49.99,
       subscribers: [

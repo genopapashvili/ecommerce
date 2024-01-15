@@ -16,4 +16,20 @@ export class CardComponent {
     return this.product.images[0]
   }
 
+  onAddItemClick(event: Event) {
+    event.stopPropagation();
+  }
+
+  onBuyClick(event: Event) {
+    event.stopPropagation();
+  }
+
+  onSubscribersClick(event: MouseEvent) {
+    event.stopPropagation();
+  }
+
+
+  getRates(){
+      return this.product.subscribers.map( it => it.rate);
+  }
 }

@@ -1,0 +1,20 @@
+
+.product-images {
+  display: flex;
+  flex-direction: row;
+}
+
+.product-images li img {
+  max-width: 5rem;
+}
+
+.product-images ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.image{
+  max-width: 45rem;
+  max-height: 45rem;
+}

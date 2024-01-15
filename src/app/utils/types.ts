@@ -5,12 +5,15 @@ export type Subscriber = {
 }
 
 export type Product = {
+  id: number,
   title: string,
   images: string[],
   category: string,
   price: number
   subscribers: Subscriber[]
 }
+
+export type ProductParam = { id: string }
 
 export type Supplier<R> = () => R;
 export type Consumer<T> = (consumer: T) => void;

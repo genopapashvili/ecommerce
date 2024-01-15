@@ -19,14 +19,21 @@ export class EcommerceService {
 
   public products() {
     return this.http.get<Product[]>(environment.apiUrl + "/products")
+      .pipe(map(addImagesPath))
+  }
+
+  product(param: number) {
+    return this.http.get<Product>(environment.apiUrl + "/product/" + param)
       .pipe(map(addImagePath))
   }
 }
 
-function addImagePath(it: Product[]) {
-  return it.map(p => {
-    p.images = p.images.map(i => environment.apiUrl + "/assets/" + i);
+function addImagesPath(it: Product[]) {
+  return it.map(addImagePath)
+}
 
-    return p;
-  })
+function addImagePath(product: Product) {
+  product.images = product.images.map(i => environment.apiUrl + "/assets/" + i);
+
+  return product;
 }
