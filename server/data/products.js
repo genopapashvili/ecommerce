@@ -106,7 +106,9 @@ module.exports = {
     {
       id: 5,
       title: "Noise-Cancelling Headphones",
-      images: ["headphones1.jpg", "headphones2.jpg", "headphones3.jpg"],
+      images: [
+        "n1.jpeg", "n2.jpeg", "n3.jpeg"
+      ],
       category: "Electronics",
       price: 129.99,
       subscribers: [
@@ -130,7 +132,9 @@ module.exports = {
     {
       id: 6,
       title: "Ergonomic Office Chair",
-      images: ["chair1.jpg", "chair2.jpg", "chair3.jpg"],
+      images: [
+        "ch1.png","ch2.jpg","ch3.jpg","ch4.jpg","ch5.jpg","ch6.jpg","ch7.jpg","ch8.jpg","ch9.jpg","ch10.jpg",
+      ],
       category: "Furniture",
       price: 249.99,
       subscribers: [
@@ -154,7 +158,7 @@ module.exports = {
     {
       id: 7,
       title: "Vegan Leather Tote Bag",
-      images: ["tote1.jpg", "tote2.jpg", "tote3.jpg"],
+      images: ["b1.jpg","b2.jpg","b3.jpg","b4.jpg","b5.jpg","b6.jpg","b7.jpg"],
       category: "Accessories",
       price: 69.99,
       subscribers: [
@@ -178,7 +182,7 @@ module.exports = {
     {
       id: 8,
       title: "Cast Iron Skillet",
-      images: ["skillet1.jpg", "skillet2.jpg"],
+      images: ["p1.jpg","p2.jpg","p3.jpg","p4.jpg","p5.jpg","p6.jpg","p7.jpg"],
       category: "Kitchen",
       price: 39.99,
       subscribers: [
