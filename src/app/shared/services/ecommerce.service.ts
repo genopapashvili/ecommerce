@@ -33,7 +33,7 @@ function addImagesPath(it: Product[]) {
 }
 
 function addImagePath(product: Product) {
-  product.images = product.images.map(i => environment.apiUrl + "/assets/" + i);
+  product.images = product.images?.map(i => environment.apiUrl + "/assets/" + i);
 
   return product;
 }

@@ -1,4 +1,7 @@
 <div class="row justify-content-center">
+  <div *ngIf="products && products.length === 0 && !error"><p class="mistake">Oops... no any product found</p></div>
+  <div *ngIf="!products"><p class="mistake">loading...</p></div>
+  <div *ngIf="error"><p class="mistake">Oops... it seems there is server fault</p></div>
   <div class="col-auto" *ngFor="let product of products">
     <app-card (click)="onProductClick(product.id)" [product]="product"></app-card>
   </div>

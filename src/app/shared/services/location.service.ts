@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
-import {filter, Observable, Subject} from "rxjs";
+import {BehaviorSubject, filter, Observable} from "rxjs";
 
 
 export type UrlBundle = {
@@ -13,7 +13,7 @@ export type UrlBundle = {
 })
 export class LocationService {
 
-  private urlChanges = new Subject<UrlBundle>();
+  private urlChanges = new BehaviorSubject<UrlBundle | null>(null);
 
   constructor(private route: ActivatedRoute, private router: Router) {
     window.onload = () => {
@@ -28,15 +28,15 @@ export class LocationService {
   }
 
 
-  onUrlChanges(): Observable<UrlBundle> {
-    return this.urlChanges.asObservable();
+  onUrlChanges() {
+    return this.urlChanges
+      .pipe(filter(it => it !== null)) as Observable<UrlBundle>
   }
 
   private parseUrl() {
     const url = new URL(window.location.href);
     const pathname = url.pathname;
     const searchParams = url.searchParams
-
     return {pathname, searchParams}
   }
 }

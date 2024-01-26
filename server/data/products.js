@@ -133,7 +133,7 @@ module.exports = {
       id: 6,
       title: "Ergonomic Office Chair",
       images: [
-        "ch1.png","ch2.jpg","ch3.jpg","ch4.jpg","ch5.jpg","ch6.jpg","ch7.jpg","ch8.jpg","ch9.jpg","ch10.jpg",
+        "ch1.png", "ch2.jpg", "ch3.jpg", "ch4.jpg", "ch5.jpg", "ch6.jpg", "ch7.jpg", "ch8.jpg", "ch9.jpg", "ch10.jpg",
       ],
       category: "Furniture",
       price: 249.99,
@@ -158,7 +158,7 @@ module.exports = {
     {
       id: 7,
       title: "Vegan Leather Tote Bag",
-      images: ["b1.jpg","b2.jpg","b3.jpg","b4.jpg","b5.jpg","b6.jpg","b7.jpg"],
+      images: ["b1.jpg", "b2.jpg", "b3.jpg", "b4.jpg", "b5.jpg", "b6.jpg", "b7.jpg"],
       category: "Accessories",
       price: 69.99,
       subscribers: [
@@ -181,8 +181,21 @@ module.exports = {
     },
     {
       id: 8,
+      title: "A gold teaspoon and two gold plates",
+      category: "Kitchen",
+      price: 700.99,
+      subscribers: [
+        {
+          fullName: "Giorgi Abashidze",
+          rate: 4,
+          comment: "It is very slim and you won't eat anything with it"
+        }
+      ]
+    },
+    {
+      id: 9,
       title: "Cast Iron Skillet",
-      images: ["p1.jpg","p2.jpg","p3.jpg","p4.jpg","p5.jpg","p6.jpg","p7.jpg"],
+      images: ["p1.jpg", "p2.jpg", "p3.jpg", "p4.jpg", "p5.jpg", "p6.jpg", "p7.jpg"],
       category: "Kitchen",
       price: 39.99,
       subscribers: [
