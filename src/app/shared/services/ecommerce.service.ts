@@ -17,8 +17,8 @@ export class EcommerceService {
     return this.http.get<string[]>(environment.apiUrl + "/categories")
   }
 
-  public products() {
-    return this.http.get<Product[]>(environment.apiUrl + "/products")
+  public products(category: string, query: string) {
+    return this.http.get<Product[]>(environment.apiUrl + "/products?category=" + category + "&query=" + query)
       .pipe(map(addImagesPath))
   }
 
