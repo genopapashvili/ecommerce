@@ -56,7 +56,17 @@ app.get('/categories', (req, res) => {
 })
 
 app.get('/products', (req, res) => {
-  res.send(products);
+  const requestData = req.query;
+  let data = products;
+  if (requestData.category && requestData.category !== "All") {
+    data = data.filter(it => it.category === requestData.category);
+  }
+
+  if (requestData.query && requestData.query !== "") {
+    data = data.filter(it => it.title.toLowerCase().includes(requestData.query.toLowerCase()))
+  }
+
+  res.send(data);
 });
 
 app.get("/product/:id", (req, res) => {

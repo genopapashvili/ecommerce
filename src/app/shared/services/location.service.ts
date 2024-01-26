@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {Location} from "@angular/common";
-import {Observable, Subject} from "rxjs";
+import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
+import {filter, Observable, Subject} from "rxjs";
 
 
 export type UrlBundle = {
@@ -16,14 +15,16 @@ export class LocationService {
 
   private urlChanges = new Subject<UrlBundle>();
 
-  constructor(private route: ActivatedRoute, private router: Router, private location: Location) {
+  constructor(private route: ActivatedRoute, private router: Router) {
     window.onload = () => {
       this.urlChanges.next(this.parseUrl())
     }
 
-    this.location.onUrlChange(() => {
-      this.urlChanges.next(this.parseUrl())
-    })
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this.urlChanges.next(this.parseUrl())
+      });
   }
 
 
