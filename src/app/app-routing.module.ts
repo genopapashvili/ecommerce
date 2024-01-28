@@ -1,12 +1,15 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {AppComponent} from "./app.component";
 import {ProductComponent} from "./shared/components/product/product.component";
 import {ShopComponent} from "./features/main/shop/shop.component";
+import {LoginComponent} from "./features/components/login/login.component";
 
 const routes: Routes = [
   {
     path: "products/:category", component: ShopComponent
+  },
+  {
+    path: "login", component: LoginComponent
   },
   {
     path: "product/:id", component: ProductComponent
@@ -15,7 +18,7 @@ const routes: Routes = [
     path: "", redirectTo: "products/All", pathMatch: "full"
   },
   {
-    path: "**", component: ShopComponent
+    path: "**", redirectTo: "products/All", pathMatch: "full"
   }
 ];
 

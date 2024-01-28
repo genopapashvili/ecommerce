@@ -25,6 +25,9 @@ import {matStarOutline} from "@ng-icons/material-icons/outline";
 import { CardComponent } from './shared/components/card/card.component';
 import {HttpClientModule} from "@angular/common/http";
 import { ProductComponent } from './shared/components/product/product.component';
+import { LoginComponent } from './features/components/login/login.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import { InspectDirective } from './shared/directives/inspect.directive';
 
 
 @NgModule({
@@ -39,15 +42,18 @@ import { ProductComponent } from './shared/components/product/product.component'
     ShopComponent,
     RateComponent,
     CardComponent,
-    ProductComponent
+    ProductComponent,
+    LoginComponent,
+    InspectDirective
   ],
-  imports: [
-    HttpClientModule,
-    BrowserModule,
-    AppRoutingModule,
-    NgOptimizedImage,
-    NgIconComponent
-  ],
+    imports: [
+        HttpClientModule,
+        BrowserModule,
+        AppRoutingModule,
+        NgOptimizedImage,
+        NgIconComponent,
+        ReactiveFormsModule
+    ],
 
   providers: [provideIcons({
     matLogIn,

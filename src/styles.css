@@ -7,3 +7,13 @@
 .bg-secondary{
   background-color: #00E676 !important;
 }
+
+.invalid{
+  border-color: red;
+}
+
+.color-red{
+  color:red;
+}
+
+
