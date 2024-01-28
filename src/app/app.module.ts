@@ -8,13 +8,11 @@ import {SearchComponent} from './features/components/search/search.component';
 import {MenuComponent} from './features/components/menu/menu.component';
 import {LogoComponent} from './features/components/logo/logo.component';
 import {NgOptimizedImage} from "@angular/common";
-import {LandingMenuComponent} from './features/components/menu/landing-menu/landing-menu.component';
-import {HomeMenuComponent} from './features/components/menu/home-menu/home-menu.component';
 import {NgIconComponent, provideIcons} from "@ng-icons/core";
 import {
   matContactSupport,
   matInventory2,
-  matLogIn, matPayment, matReviews,
+  matLogIn, matLogOut, matPayment, matReviews,
   matShop, matShoppingBasket,
   matStarBorder,
   matStarHalf
@@ -28,6 +26,10 @@ import { ProductComponent } from './shared/components/product/product.component'
 import { LoginComponent } from './features/components/login/login.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { InspectDirective } from './shared/directives/inspect.directive';
+import { UserMenuComponent } from './features/components/menu/user-menu/user-menu.component';
+import { DefaultMenuComponent } from './features/components/menu/default-menu/default-menu.component';
+import { ForgetPasswordComponent } from './features/components/forget-password/forget-password.component';
+import { RegistrationComponent } from './features/components/registration/registration.component';
 
 
 @NgModule({
@@ -37,14 +39,16 @@ import { InspectDirective } from './shared/directives/inspect.directive';
     SearchComponent,
     MenuComponent,
     LogoComponent,
-    LandingMenuComponent,
-    HomeMenuComponent,
     ShopComponent,
     RateComponent,
     CardComponent,
     ProductComponent,
     LoginComponent,
-    InspectDirective
+    InspectDirective,
+    UserMenuComponent,
+    DefaultMenuComponent,
+    ForgetPasswordComponent,
+    RegistrationComponent
   ],
     imports: [
         HttpClientModule,
@@ -57,6 +61,7 @@ import { InspectDirective } from './shared/directives/inspect.directive';
 
   providers: [provideIcons({
     matLogIn,
+    matLogOut,
     matContactSupport,
     matShop,
     matInventory2,

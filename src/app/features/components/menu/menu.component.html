@@ -1,23 +1,7 @@
 <div>
-  <ul>
-    <li>
-      <a href="#">
-        <ng-icon name="matShop" color="#777" size="28px"></ng-icon>
-        <span>Shop</span>
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        <ng-icon name="matContactSupport" color="#777" size="28px"></ng-icon>
-        <span>Support</span>
-      </a>
-    </li>
-    <li>
-      <a routerLink="/login">
-        <ng-icon name="matLogIn" color="#777" size="28px"></ng-icon>
-        <span>Log In</span>
-      </a>
-    </li>
-  </ul>
+  <app-user-menu *ngIf="status === 1; else defaultMenu"></app-user-menu>
+  <ng-template #defaultMenu>
+    <app-default-menu></app-default-menu>
+  </ng-template>
 </div>
 

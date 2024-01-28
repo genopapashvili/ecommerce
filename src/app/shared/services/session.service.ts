@@ -40,6 +40,10 @@ export class SessionService {
     this.sessionSubject.next(SessionStatus.removed)
   }
 
+  public isToken() {
+    return typeof this.getToken() === "string"
+  }
+
   public getToken() {
     return window.sessionStorage.getItem("token");
   }
