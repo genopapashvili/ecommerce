@@ -18,44 +18,17 @@ const {users} = require("../server/data/user")
 app.use(express.json());
 app.use(cors(corsOptions));
 app.use("/assets", express.static('server/assets'));
-app.get('/image', async (req, res) => {
-  const targetWidth = 100;
-  const targetHeight = 100;
+
+app.get('/basket', (req, res) => {
   try {
-    const imagePath = "server/assets/1.jpg"
-    const imageInfo = await sharp(imagePath).metadata();
-    const originalWidth = imageInfo.width;
-    const originalHeight = imageInfo.height;
-
-    // Calculate center coordinates
-    const left = Math.max(0, Math.floor(originalWidth / 2 - targetWidth / 2));
-    const top = Math.max(0, Math.floor(originalHeight / 2 - targetHeight / 2));
-
-    // Handle resizing if needed
-    let resizedImage;
-    if (targetWidth < originalWidth || targetHeight < originalHeight) {
-      resizedImage = sharp(imagePath).resize({width: targetWidth, height: targetHeight});
-    } else {
-      resizedImage = sharp(imagePath);
-    }
-
-    // Crop centered area
-    const croppedImage = resizedImage.extract({
-      width: targetWidth,
-      height: targetHeight,
-      left,
-      top,
-    });
-    // Set content type and send cropped image data
-    res.type('image/jpeg'); // adjust based on image format (jpg, png, etc.)
-    croppedImage.toBuffer().then(buffer => {
-      res.send(buffer);
-    });
-  } catch (error) {
-    console.error('Error cropping image:', error);
-    res.status(500).send('Error processing image');
+    const user = getUser(req)
+    console.log(user)
+    res.send(user.basket)
+  } catch (e) {
+    res.status(401)
+    res.send({error: e.message});
   }
-});
+})
 
 app.get('/categories', (req, res) => {
   res.send(Array.from(new Set(products.map(it => it.category))))
@@ -90,7 +63,7 @@ app.post("/login", (req, res) => {
     })
   }
   const token = jwt.sign(userDetails, 'shhhhh')
-  sessionMap.set(token, found);
+  sessionMap.set(token, found.id);
 
   res.send({token})
 });
@@ -112,3 +85,24 @@ app.get("/product/:id", (req, res) => {
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
+
+function getUser(req) {
+  const userId = sessionMap.get(getToken(req))
+  isOrThrowAsUnauthorized(userId)
+  const user = users.find(it => it.id === userId)
+  isOrThrowAsUnauthorized(user)
+
+  return user
+}
+
+function isOrThrowAsUnauthorized(variable) {
+  if (!variable) {
+    throw new Error("Unauthorized")
+  }
+}
+
+function getToken(req) {
+  const authHeader = req.header("Authorization")
+  isOrThrowAsUnauthorized(authHeader)
+  return authHeader.trim().replace(/^Bearer /g, "");
+}

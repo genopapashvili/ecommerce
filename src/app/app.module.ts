@@ -12,26 +12,31 @@ import {NgIconComponent, provideIcons} from "@ng-icons/core";
 import {
   matContactSupport,
   matInventory2,
-  matLogIn, matLogOut, matPayment, matReviews,
-  matShop, matShoppingBasket,
+  matLogIn,
+  matLogOut,
+  matPayment,
+  matPerson,
+  matReviews,
+  matShop,
+  matShoppingBasket,
   matStarBorder,
-  matStarHalf,
-  matPerson
+  matStarHalf
 } from "@ng-icons/material-icons/baseline";
 import {ShopComponent} from './features/main/shop/shop.component';
 import {RateComponent} from './shared/components/rate/rate.component';
 import {matShopifyOutline, matStarOutline} from "@ng-icons/material-icons/outline";
-import { CardComponent } from './shared/components/card/card.component';
-import {HttpClientModule} from "@angular/common/http";
-import { ProductComponent } from './shared/components/product/product.component';
-import { LoginComponent } from './features/components/login/login.component';
+import {CardComponent} from './shared/components/card/card.component';
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {ProductComponent} from './shared/components/product/product.component';
+import {LoginComponent} from './features/components/login/login.component';
 import {ReactiveFormsModule} from "@angular/forms";
-import { InspectDirective } from './shared/directives/inspect.directive';
-import { UserMenuComponent } from './features/components/menu/user-menu/user-menu.component';
-import { DefaultMenuComponent } from './features/components/menu/default-menu/default-menu.component';
-import { ForgetPasswordComponent } from './features/components/forget-password/forget-password.component';
-import { RegistrationComponent } from './features/components/registration/registration.component';
-import { BasketComponent } from './features/components/basket/basket.component';
+import {InspectDirective} from './shared/directives/inspect.directive';
+import {UserMenuComponent} from './features/components/menu/user-menu/user-menu.component';
+import {DefaultMenuComponent} from './features/components/menu/default-menu/default-menu.component';
+import {ForgetPasswordComponent} from './features/components/forget-password/forget-password.component';
+import {RegistrationComponent} from './features/components/registration/registration.component';
+import {BasketComponent} from './features/components/basket/basket.component';
+import {SessionInterceptorInterceptor} from "./shared/interceptors/session-interceptor.interceptor";
 
 
 @NgModule({
@@ -53,14 +58,14 @@ import { BasketComponent } from './features/components/basket/basket.component';
     RegistrationComponent,
     BasketComponent
   ],
-    imports: [
-        HttpClientModule,
-        BrowserModule,
-        AppRoutingModule,
-        NgOptimizedImage,
-        NgIconComponent,
-        ReactiveFormsModule
-    ],
+  imports: [
+    HttpClientModule,
+    BrowserModule,
+    AppRoutingModule,
+    NgOptimizedImage,
+    NgIconComponent,
+    ReactiveFormsModule
+  ],
 
   providers: [provideIcons({
     matLogIn,
@@ -76,7 +81,12 @@ import { BasketComponent } from './features/components/basket/basket.component';
     matPayment,
     matPerson,
     matShopifyOutline
-  })],
+  }),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: SessionInterceptorInterceptor,
+      multi: true,
+    },],
 
   bootstrap: [AppComponent]
 })

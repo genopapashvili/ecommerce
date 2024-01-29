@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Product} from "../../../utils/types";
+import {EcommerceService} from "../../services/ecommerce.service";
 
 @Component({
   selector: 'app-card',
@@ -12,12 +13,16 @@ export class CardComponent {
   public product!: Product
 
 
+  constructor(private ecommerceService: EcommerceService) {
+  }
+
   getFirstImage() {
     return this.product.images[0]
   }
 
   onAddItemClick(event: Event) {
     event.stopPropagation();
+    this.ecommerceService.addToBasket(this.product);
   }
 
   onBuyClick(event: Event) {
@@ -29,7 +34,7 @@ export class CardComponent {
   }
 
 
-  getRates(){
-      return this.product.subscribers.map( it => it.rate);
+  getRates() {
+    return this.product.subscribers.map(it => it.rate);
   }
 }
