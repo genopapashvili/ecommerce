@@ -6,6 +6,7 @@ import {LoginComponent} from "./features/components/login/login.component";
 import {SessionGuard} from "./shared/guards/sessionGuard";
 import {ForgetPasswordComponent} from "./features/components/forget-password/forget-password.component";
 import {RegistrationComponent} from "./features/components/registration/registration.component";
+import {BasketComponent} from "./features/components/basket/basket.component";
 
 const routes: Routes = [
   {
@@ -19,6 +20,12 @@ const routes: Routes = [
   },
   {
     path: "login", component: LoginComponent, canActivate: [SessionGuard]
+  },
+  {
+    path: "basket", component: BasketComponent, canActivate: [SessionGuard]
+  },
+  {
+    path: "profile", component: BasketComponent, canActivate: [SessionGuard]
   },
   {
     path: "product/:id", component: ProductComponent

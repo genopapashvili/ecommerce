@@ -15,11 +15,12 @@ import {
   matLogIn, matLogOut, matPayment, matReviews,
   matShop, matShoppingBasket,
   matStarBorder,
-  matStarHalf
+  matStarHalf,
+  matPerson
 } from "@ng-icons/material-icons/baseline";
 import {ShopComponent} from './features/main/shop/shop.component';
 import {RateComponent} from './shared/components/rate/rate.component';
-import {matStarOutline} from "@ng-icons/material-icons/outline";
+import {matShopifyOutline, matStarOutline} from "@ng-icons/material-icons/outline";
 import { CardComponent } from './shared/components/card/card.component';
 import {HttpClientModule} from "@angular/common/http";
 import { ProductComponent } from './shared/components/product/product.component';
@@ -30,6 +31,7 @@ import { UserMenuComponent } from './features/components/menu/user-menu/user-men
 import { DefaultMenuComponent } from './features/components/menu/default-menu/default-menu.component';
 import { ForgetPasswordComponent } from './features/components/forget-password/forget-password.component';
 import { RegistrationComponent } from './features/components/registration/registration.component';
+import { BasketComponent } from './features/components/basket/basket.component';
 
 
 @NgModule({
@@ -48,7 +50,8 @@ import { RegistrationComponent } from './features/components/registration/regist
     UserMenuComponent,
     DefaultMenuComponent,
     ForgetPasswordComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    BasketComponent
   ],
     imports: [
         HttpClientModule,
@@ -70,7 +73,9 @@ import { RegistrationComponent } from './features/components/registration/regist
     matStarOutline,
     matReviews,
     matShoppingBasket,
-    matPayment
+    matPayment,
+    matPerson,
+    matShopifyOutline
   })],
 
   bootstrap: [AppComponent]
