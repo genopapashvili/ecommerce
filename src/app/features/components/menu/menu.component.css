@@ -29,14 +29,17 @@ li:hover{
 }
 
 .items-quantity{
-  line-height: 1;
+  padding: 1px;
+  min-width: 20px;
+  min-height: 20px;
+  line-height: normal;
   font-weight: bold;
-  padding: 2px;
+ text-align: center;
   border: 1px solid #666;
-  margin-left: 20px;
+  margin-left: 30px;
   margin-top: -5px;
   font-size: 0.78rem;
-  border-radius: 35%;
+  border-radius: 10px;
   color: #666;
   background-color: white;
   position: absolute;
