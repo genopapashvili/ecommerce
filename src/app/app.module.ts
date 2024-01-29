@@ -36,7 +36,7 @@ import {DefaultMenuComponent} from './features/components/menu/default-menu/defa
 import {ForgetPasswordComponent} from './features/components/forget-password/forget-password.component';
 import {RegistrationComponent} from './features/components/registration/registration.component';
 import {BasketComponent} from './features/components/basket/basket.component';
-import {SessionInterceptorInterceptor} from "./shared/interceptors/session-interceptor.interceptor";
+import {SessionInterceptor} from "./shared/interceptors/session.interceptor";
 
 
 @NgModule({
@@ -84,7 +84,7 @@ import {SessionInterceptorInterceptor} from "./shared/interceptors/session-inter
   }),
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: SessionInterceptorInterceptor,
+      useClass: SessionInterceptor,
       multi: true,
     },],
 

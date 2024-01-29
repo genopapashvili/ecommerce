@@ -4,6 +4,12 @@ export type Subscriber = {
   comment: string
 }
 
+export type  Runnable = () => void;
+
+export type SuccessResponse = {
+  success: boolean
+}
+
 export type Product = {
   id: number,
   title: string,

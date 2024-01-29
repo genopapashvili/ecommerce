@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const sharp = require('sharp');
+//const sharp = require('sharp');
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 
@@ -19,10 +19,26 @@ app.use(express.json());
 app.use(cors(corsOptions));
 app.use("/assets", express.static('server/assets'));
 
+
+app.post('/basket', (req, res) => {
+  try {
+    const user = getUser(req)
+    if (req.body && req.body.id) {
+      user.basket.push(req.body)
+      res.send({success: true})
+    } else {
+      res.status(403)
+      res.send({success: false})
+    }
+  } catch (e) {
+    res.status(401)
+    res.send({error: e.message});
+  }
+})
+
 app.get('/basket', (req, res) => {
   try {
     const user = getUser(req)
-    console.log(user)
     res.send(user.basket)
   } catch (e) {
     res.status(401)
@@ -73,12 +89,13 @@ app.get("/product/:id", (req, res) => {
     let result = products.find(it => it.id === productId)
     if (!result) {
       res.status(404)
-      throw new Error("not found")
+      res.send({error: "not found"})
+      return;
     }
 
     res.send(result)
   } catch (e) {
-    res.send(e.message)
+    res.send({error: e.message})
   }
 })
 

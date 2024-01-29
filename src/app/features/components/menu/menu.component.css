@@ -27,3 +27,18 @@ li:hover{
   background-color: rgba(0, 0, 0, 0.03);
   text-decoration: underline;
 }
+
+.items-quantity{
+  line-height: 1;
+  font-weight: bold;
+  padding: 2px;
+  border: 1px solid #666;
+  margin-left: 20px;
+  margin-top: -5px;
+  font-size: 0.78rem;
+  border-radius: 35%;
+  color: #666;
+  background-color: white;
+  position: absolute;
+  z-index: 1;
+}

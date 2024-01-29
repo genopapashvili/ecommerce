@@ -1,9 +1,11 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
-import {Product} from "../../utils/types";
+import {Product, SuccessResponse} from "../../utils/types";
 import {map, Subject} from "rxjs";
 import {switchMap, tap} from "rxjs/operators";
+
+export type BasketItem = { id: number }
 
 @Injectable({
   providedIn: 'root'
@@ -37,14 +39,15 @@ export class EcommerceService {
 
   deleteBasketItem(id: number) {
     return this.http.delete(environment.apiUrl = "/basket", {body: {id}})
+      .pipe(tap((it) => this.basketSubject.next(it)))
   }
 
   getBasket() {
-    return this.http.get(environment.apiUrl + "/basket",{headers: {dsd:"Abc"}})
+    return this.http.get<BasketItem[]>(environment.apiUrl + "/basket", {headers: {dsd: "Abc"}})
   }
 
   addToBasket(product: Product) {
-    return this.http.post(environment.apiUrl + "/basket", {id: product.id})
+    return this.http.post<SuccessResponse>(environment.apiUrl + "/basket", {id: product.id})
       .pipe(tap((it) => this.basketSubject.next(it)))
   }
 }
