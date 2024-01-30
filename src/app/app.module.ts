@@ -34,7 +34,7 @@ import {InspectDirective} from './shared/directives/inspect.directive';
 import {UserMenuComponent} from './features/components/menu/user-menu/user-menu.component';
 import {DefaultMenuComponent} from './features/components/menu/default-menu/default-menu.component';
 import {ForgetPasswordComponent} from './features/components/forget-password/forget-password.component';
-import {RegistrationComponent} from './features/components/registration/registration.component';
+import {EnrollmentComponent} from './features/components/registration/enrollment.component';
 import {BasketComponent} from './features/components/basket/basket.component';
 import {SessionInterceptor} from "./shared/interceptors/session.interceptor";
 import { AuthFormContainerComponent } from './shared/components/auth-form-container/auth-form-container.component';
@@ -56,7 +56,7 @@ import { AuthFormContainerComponent } from './shared/components/auth-form-contai
     UserMenuComponent,
     DefaultMenuComponent,
     ForgetPasswordComponent,
-    RegistrationComponent,
+    EnrollmentComponent,
     BasketComponent,
     AuthFormContainerComponent
   ],

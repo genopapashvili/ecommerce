@@ -3,12 +3,12 @@ import {FormGroup, NonNullableFormBuilder} from "@angular/forms";
 
 @Component({
   selector: 'app-registration',
-  templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.css']
+  templateUrl: './enrollment.component.html',
+  styleUrls: ['./enrollment.component.css']
 })
-export class RegistrationComponent {
+export class EnrollmentComponent {
 
-  public registrationError!:string
+  public enrollmentError!:string
 
   formGroup!: FormGroup
 
@@ -23,7 +23,7 @@ export class RegistrationComponent {
     })
   }
 
-  onRegistrationClick(event: Event) {
+  onSignUpClick(event: Event) {
 
   }
 }

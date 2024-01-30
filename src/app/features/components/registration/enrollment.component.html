@@ -1,7 +1,7 @@
 <app-auth-form-container>
   <form class="auth-form" [formGroup]="formGroup">
     <div class="d-flex justify-content-center">
-      <p class="color-red" *ngIf="registrationError">{{registrationError}}</p>
+      <p class="color-red" *ngIf="enrollmentError">{{enrollmentError}}</p>
     </div>
     <div class="mb-3">
       <label for="first-name" class="form-label">First Name</label>
@@ -30,6 +30,6 @@
       <label for="repeat-password" class="form-label">Repeat Password</label>
       <input inspect formControlName="repeatPassword" type="password" class="form-control" id="repeat-password">
     </div>
-    <button (click)="onRegistrationClick($event)" [disabled]="formGroup.invalid" class="btn btn-light">Sign In</button>
+    <button (click)="onSignUpClick($event)" [disabled]="formGroup.invalid" class="btn btn-light">Sign In</button>
   </form>
 </app-auth-form-container>
