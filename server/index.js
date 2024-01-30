@@ -5,8 +5,6 @@ const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 
-const sessionMap = new Map();
-
 const port = 3001;
 const corsOptions = {
   origin: 'http://localhost:4200',
@@ -15,9 +13,43 @@ const corsOptions = {
 const {products} = require("../server/data/products")
 const {users} = require("../server/data/user")
 
+const secret = "secret"
+const sessionMap = new Map();
+const clarificationMap = new Map();
+
+
 app.use(express.json());
 app.use(cors(corsOptions));
 app.use("/assets", express.static('server/assets'));
+
+
+app.post("/enrollment", (req, res) => {
+  const userDetails = req.body
+  const token = jwt.sign(userDetails, secret)
+  const code = nextCertificationCode()
+  console.log(code)
+  clarificationMap.set(token, {
+    task: enrollment,
+    code
+  })
+  res.send({token})
+})
+
+app.post("/certify", (req, res) => {
+  const body = req.body;
+  const result = {success: false}
+  const data = jwt.verify(body.token, secret);
+  const handlerHolder = clarificationMap.get(body.token)
+  console.log(handlerHolder.code)
+  console.log(body.code)
+  if (handlerHolder.code === body.code) {
+    result.success = handlerHolder.task(data);
+    res.send(result)
+  } else {
+    res.status(403)
+    res.send(result)
+  }
+})
 
 
 app.post('/basket', (req, res) => {
@@ -78,7 +110,7 @@ app.post("/login", (req, res) => {
       error: "Email or password is incorrect"
     })
   }
-  const token = jwt.sign(userDetails, 'shhhhh')
+  const token = jwt.sign(userDetails, secret)
   sessionMap.set(token, found.id);
 
   res.send({token})
@@ -122,4 +154,29 @@ function getToken(req) {
   const authHeader = req.header("Authorization")
   isOrThrowAsUnauthorized(authHeader)
   return authHeader.trim().replace(/^Bearer /g, "");
+}
+
+function enrollment(data) {
+  const copied = {
+    id: users.length,
+    firstName: data.firstName,
+    lastName: data.lastName,
+    birthDate: data.birthDate,
+    email: data.email,
+    password: encodePassword(data.password),
+    basket: []
+  }
+  console.log("Added new client: " + copied)
+  users.push(copied)
+
+  return true
+}
+
+function nextCertificationCode() {
+  const rn = "1234" + Math.round(Math.random() * 100000).toString(10)
+  return rn.substring(rn.length - 4, 4)
+}
+
+function encodePassword(password) {
+  return crypto.createHash('md5').update(password.password).digest('hex');
 }
