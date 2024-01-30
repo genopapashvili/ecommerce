@@ -1,5 +1,5 @@
-<div class="d-flex justify-content-center mt-5 mb-5">
-  <form class="login-form" [formGroup]="formGroup">
+<app-auth-form-container>
+  <form class="auth-form" [formGroup]="formGroup">
     <div class="d-flex justify-content-center">
       <p class="color-red" *ngIf="loginError">{{loginError}}</p>
     </div>
@@ -21,4 +21,4 @@
     </div>
     <button (click)="onLoginClick($event)" [disabled]="formGroup.invalid" class="btn btn-light">Login</button>
   </form>
-</div>
+</app-auth-form-container>

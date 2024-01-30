@@ -37,6 +37,7 @@ import {ForgetPasswordComponent} from './features/components/forget-password/for
 import {RegistrationComponent} from './features/components/registration/registration.component';
 import {BasketComponent} from './features/components/basket/basket.component';
 import {SessionInterceptor} from "./shared/interceptors/session.interceptor";
+import { AuthFormContainerComponent } from './shared/components/auth-form-container/auth-form-container.component';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import {SessionInterceptor} from "./shared/interceptors/session.interceptor";
     DefaultMenuComponent,
     ForgetPasswordComponent,
     RegistrationComponent,
-    BasketComponent
+    BasketComponent,
+    AuthFormContainerComponent
   ],
   imports: [
     HttpClientModule,
