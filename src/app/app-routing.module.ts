@@ -5,7 +5,7 @@ import {ShopComponent} from "./features/main/shop/shop.component";
 import {LoginComponent} from "./features/components/login/login.component";
 import {SessionGuard} from "./shared/guards/sessionGuard";
 import {ForgetPasswordComponent} from "./features/components/forget-password/forget-password.component";
-import {EnrollmentComponent} from "./features/components/registration/enrollment.component";
+import {EnrollmentComponent} from "./features/components/enrollment/enrollment.component";
 import {BasketComponent} from "./features/components/basket/basket.component";
 
 const routes: Routes = [
