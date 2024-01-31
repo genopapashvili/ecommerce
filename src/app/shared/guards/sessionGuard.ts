@@ -11,7 +11,7 @@ export const SessionGuard: CanActivateFn = (route, state) => {
   switch (state.url) {
     case "/login":
     case "/forget-password":
-    case "/enrollment":
+    case "/registration":
       if (isToken) {
         router.navigate(["products/All"])
         return false

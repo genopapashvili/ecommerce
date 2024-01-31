@@ -4,6 +4,7 @@ const cors = require('cors');
 //const sharp = require('sharp');
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
+const moment = require('moment')
 
 const port = 3001;
 const corsOptions = {
@@ -23,16 +24,28 @@ app.use(cors(corsOptions));
 app.use("/assets", express.static('server/assets'));
 
 
-app.post("/enrollment", (req, res) => {
+app.post("/register", (req, res) => {
+
   const userDetails = req.body
+  const found = users.find(it => it.email === userDetails.email)
+  if (found) {
+    res.status(403)
+    res.send({error: "The email is already used"})
+    return;
+  }
   const token = jwt.sign(userDetails, secret)
   const code = nextCertificationCode()
   console.log(code)
   clarificationMap.set(token, {
-    task: enrollment,
+    task: registration,
     code
   })
-  res.send({token})
+
+  const duration = moment.duration(60, 'seconds');
+  setTimeout(() => {
+    clarificationMap.delete(token)
+  }, duration.asMilliseconds())
+  res.send({token, expirationDate: moment().add(duration).toDate()})
 })
 
 app.post("/certify", (req, res) => {
@@ -40,8 +53,6 @@ app.post("/certify", (req, res) => {
   const result = {success: false}
   const data = jwt.verify(body.token, secret);
   const handlerHolder = clarificationMap.get(body.token)
-  console.log(handlerHolder.code)
-  console.log(body.code)
   if (handlerHolder.code === body.code) {
     result.success = handlerHolder.task(data);
     res.send(result)
@@ -156,9 +167,10 @@ function getToken(req) {
   return authHeader.trim().replace(/^Bearer /g, "");
 }
 
-function enrollment(data) {
+function registration(data) {
+  console.log(data)
   const copied = {
-    id: users.length,
+    id: users.length + 1,
     firstName: data.firstName,
     lastName: data.lastName,
     birthDate: data.birthDate,
@@ -166,7 +178,7 @@ function enrollment(data) {
     password: encodePassword(data.password),
     basket: []
   }
-  console.log("Added new client: " + copied)
+  console.log("Added new client: ", copied)
   users.push(copied)
 
   return true
@@ -174,9 +186,10 @@ function enrollment(data) {
 
 function nextCertificationCode() {
   const rn = "1234" + Math.round(Math.random() * 100000).toString(10)
-  return rn.substring(rn.length - 4, 4)
+  return rn.substring(rn.length - 4)
 }
 
 function encodePassword(password) {
-  return crypto.createHash('md5').update(password.password).digest('hex');
+  return crypto.createHash('md5').update(password).digest('hex');
 }
+

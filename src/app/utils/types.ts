@@ -4,8 +4,18 @@ export type Subscriber = {
   comment: string
 }
 
+
 export type  Runnable = () => void;
 
+export type TokenPayload = {
+  code: string,
+  token: string
+}
+
+export type TokenResponse = {
+  token: string,
+  expirationDate?: Date
+}
 export type SuccessResponse = {
   success: boolean
 }

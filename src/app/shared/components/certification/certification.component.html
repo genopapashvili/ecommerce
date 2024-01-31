@@ -1,0 +1,14 @@
+<form class="certification-form">
+  <div class="d-flex justify-content-center">
+    <p class="color-red" *ngIf="error">{{ error }}</p>
+  </div>
+  <div class="mb-3">
+    <label for="code" class="form-label">Enter code you have received on your email</label>
+    <input inspect [formControl]="formControl" type="text" class="form-control" id="code">
+    <div *ngIf="tokenResponse.expirationDate" class="form-text"><p>The code will be valid for <span>60</span> seconds</p></div>
+  </div>
+  <button type="button" (click)="onConfirmClick($event)" [disabled]="formControl.invalid"
+          class="btn btn-light">{{ buttonName ? buttonName : "Confirm" }}
+  </button>
+</form>
+

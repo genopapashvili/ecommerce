@@ -34,10 +34,11 @@ import {InspectDirective} from './shared/directives/inspect.directive';
 import {UserMenuComponent} from './features/components/menu/user-menu/user-menu.component';
 import {DefaultMenuComponent} from './features/components/menu/default-menu/default-menu.component';
 import {ForgetPasswordComponent} from './features/components/forget-password/forget-password.component';
-import {EnrollmentComponent} from './features/components/enrollment/enrollment.component';
+import {RegistrationComponent} from './features/components/registration/registration.component';
 import {BasketComponent} from './features/components/basket/basket.component';
 import {SessionInterceptor} from "./shared/interceptors/session.interceptor";
 import { AuthFormContainerComponent } from './shared/components/auth-form-container/auth-form-container.component';
+import { CertificationComponent } from './shared/components/certification/certification.component';
 
 
 @NgModule({
@@ -56,9 +57,10 @@ import { AuthFormContainerComponent } from './shared/components/auth-form-contai
     UserMenuComponent,
     DefaultMenuComponent,
     ForgetPasswordComponent,
-    EnrollmentComponent,
+    RegistrationComponent,
     BasketComponent,
-    AuthFormContainerComponent
+    AuthFormContainerComponent,
+    CertificationComponent
   ],
   imports: [
     HttpClientModule,
