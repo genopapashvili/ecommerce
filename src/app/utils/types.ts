@@ -20,6 +20,17 @@ export type SuccessResponse = {
   success: boolean
 }
 
+export type ErrorResponse = {
+  error: string
+}
+
+export type Profile = {
+  firstName: string,
+  lastName: string,
+  birthDate: string
+  email: string
+} & ErrorResponse
+
 export type Product = {
   id: number,
   title: string,

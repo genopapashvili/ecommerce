@@ -24,6 +24,23 @@ app.use(cors(corsOptions));
 app.use("/assets", express.static('server/assets'));
 
 
+app.get("/profile", (req, res) => {
+  try {
+    const user = getUser(req)
+    const profile = {
+      firstName: user.firstName,
+      lastName: user.lastName,
+      birthDate: user.birthDate,
+      email: user.email
+    }
+    res.send(profile)
+  } catch (e) {
+    res.status(401)
+    res.send({error: e.message});
+  }
+})
+
+
 app.post("/register", (req, res) => {
 
   const userDetails = req.body

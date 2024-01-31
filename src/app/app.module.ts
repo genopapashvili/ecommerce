@@ -11,6 +11,7 @@ import {NgOptimizedImage} from "@angular/common";
 import {NgIconComponent, provideIcons} from "@ng-icons/core";
 import {
   matContactSupport,
+  matInfo,
   matInventory2,
   matLogIn,
   matLogOut,
@@ -37,8 +38,12 @@ import {ForgetPasswordComponent} from './features/components/forget-password/for
 import {RegistrationComponent} from './features/components/registration/registration.component';
 import {BasketComponent} from './features/components/basket/basket.component';
 import {SessionInterceptor} from "./shared/interceptors/session.interceptor";
-import { AuthFormContainerComponent } from './shared/components/auth-form-container/auth-form-container.component';
-import { CertificationComponent } from './shared/components/certification/certification.component';
+import {AuthFormContainerComponent} from './shared/components/auth-form-container/auth-form-container.component';
+import {CertificationComponent} from './shared/components/certification/certification.component';
+import {FooterComponent} from './features/components/footer/footer.component';
+import {AboutComponent} from './features/components/about/about.component';
+import {cssHomeAlt} from "@ng-icons/css.gg";
+import {circumCreditCard2, circumShoppingBasket} from "@ng-icons/circum-icons";
 
 
 @NgModule({
@@ -60,7 +65,9 @@ import { CertificationComponent } from './shared/components/certification/certif
     RegistrationComponent,
     BasketComponent,
     AuthFormContainerComponent,
-    CertificationComponent
+    CertificationComponent,
+    FooterComponent,
+    AboutComponent
   ],
   imports: [
     HttpClientModule,
@@ -72,6 +79,10 @@ import { CertificationComponent } from './shared/components/certification/certif
   ],
 
   providers: [provideIcons({
+    matInfo,
+    circumCreditCard2,
+    circumShoppingBasket,
+    cssHomeAlt,
     matLogIn,
     matLogOut,
     matContactSupport,

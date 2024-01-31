@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
-import {Product, SuccessResponse} from "../../utils/types";
+import {Product, Profile, SuccessResponse} from "../../utils/types";
 import {map, Subject} from "rxjs";
 import {switchMap, tap} from "rxjs/operators";
 
@@ -49,6 +49,10 @@ export class EcommerceService {
   addToBasket(product: Product) {
     return this.http.post<SuccessResponse>(environment.apiUrl + "/basket", {id: product.id})
       .pipe(tap((it) => this.basketSubject.next(it)))
+  }
+
+  profile() {
+    return this.http.get<Profile>(environment.apiUrl + "/profile");
   }
 }
 

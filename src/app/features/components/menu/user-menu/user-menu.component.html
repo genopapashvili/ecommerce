@@ -1,8 +1,14 @@
 <ul>
   <li>
+    <a routerLink="/products/All">
+      <ng-icon name="cssHomeAlt" color="#777" size="28px"></ng-icon>
+      <span>Home</span>
+    </a>
+  </li>
+  <li>
     <a routerLink="/basket">
       <span *ngIf="basketItem && basketItem.length > 0" class="items-quantity">{{basketItem.length}}</span>
-      <ng-icon name="matShoppingBasket" color="#777" size="28px"></ng-icon>
+      <ng-icon name="circumShoppingBasket" color="#777" size="28px"></ng-icon>
       <span>Basket</span>
     </a>
   </li>
