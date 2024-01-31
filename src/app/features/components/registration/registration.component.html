@@ -1,5 +1,5 @@
 <app-auth-form-container>
-  <app-certification [tokenResponse]="tokenResponse"
+  <app-certification (confirmButtonClick)="onCertificationSubmit($event)" [tokenResponse]="tokenResponse"
                      *ngIf="(step==='certify' && tokenResponse); else registrationForm"></app-certification>
   <ng-template #registrationForm>
     <form class="auth-form" [formGroup]="formGroup">

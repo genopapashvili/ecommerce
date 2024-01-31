@@ -1,7 +1,9 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../../environments/environment";
-import {TokenPayload} from "../../../utils/types";
+import {SuccessResponse, TokenPayload} from "../../../utils/types";
+import {catchError} from "rxjs/operators";
+import {of} from "rxjs";
 
 
 @Injectable()
@@ -13,7 +15,8 @@ export class CertificationService {
 
 
   certify(payload: TokenPayload) {
-    return this.http.post(environment.apiUrl + "/certify", payload)
+    return this.http.post<SuccessResponse>(environment.apiUrl + "/certify", payload)
+      .pipe(catchError(() => of({success: false} as SuccessResponse)))
   }
 
 }

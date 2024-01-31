@@ -4,7 +4,7 @@ import {map, Subscription} from "rxjs";
 import {EnrollmentService} from "../../../shared/services/enrollment.service";
 import {Router} from "@angular/router";
 import {LocationService} from "../../../shared/services/location.service";
-import {TokenResponse} from "../../../utils/types";
+import {SuccessResponse, TokenResponse} from "../../../utils/types";
 
 @Component({
   selector: 'app-registration',
@@ -82,5 +82,11 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     this.locationService.onUrlChanges()
       .pipe(map(it => it.searchParams.get("step")))
       .subscribe(it => this.step = it)
+  }
+
+  onCertificationSubmit(response: SuccessResponse) {
+    if (response.success){
+      this.router.navigate(["/login"])
+    }
   }
 }

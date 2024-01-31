@@ -53,6 +53,12 @@ app.post("/certify", (req, res) => {
   const result = {success: false}
   const data = jwt.verify(body.token, secret);
   const handlerHolder = clarificationMap.get(body.token)
+  if (!handlerHolder) {
+    res.status(401)
+    res.send(result)
+    return;
+  }
+
   if (handlerHolder.code === body.code) {
     result.success = handlerHolder.task(data);
     res.send(result)
