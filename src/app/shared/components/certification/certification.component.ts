@@ -1,8 +1,10 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {FormControl, NonNullableFormBuilder, Validators} from "@angular/forms";
 import {CertificationService} from "./certification.service";
 import {SuccessResponse, TokenResponse} from "../../../utils/types";
-import {tap} from "rxjs/operators";
+import {take, tap} from "rxjs/operators";
+import * as moment from "moment";
+import {interval, map, Subscription} from "rxjs";
 
 @Component({
   selector: 'app-certification',
@@ -10,7 +12,7 @@ import {tap} from "rxjs/operators";
   styleUrls: ['./certification.component.css'],
   providers: [CertificationService]
 })
-export class CertificationComponent implements OnInit {
+export class CertificationComponent implements OnInit, OnDestroy {
 
   @Input()
   public buttonName = "Confirm"
@@ -28,12 +30,23 @@ export class CertificationComponent implements OnInit {
 
   public formControl!: FormControl
 
+  displayTimer = ""
+  private intervalSubscription!: Subscription
+
   constructor(fb: NonNullableFormBuilder, private certificationService: CertificationService) {
     this.formControl = fb.control('', Validators.required)
   }
 
   ngOnInit() {
-    console.log(this.tokenResponse.expirationDate?.getSeconds())
+    if (this.tokenResponse.expirationDate) {
+      const startMoment = moment()
+      const endMoment = moment(new Date(this.tokenResponse?.expirationDate))
+      const duration = Math.floor(moment.duration(endMoment.diff(startMoment)).asSeconds())
+
+      interval(1000)
+        .pipe(take(duration), map(it => ++it))
+        .subscribe(it => this.displayTimer = (duration - it).toString())
+    }
   }
 
   onConfirmClick(event: Event) {
@@ -50,6 +63,11 @@ export class CertificationComponent implements OnInit {
           this.formControl.reset()
         }
       })
+  }
+
+  ngOnDestroy() {
+    this.displayTimer = ""
+    this.intervalSubscription?.unsubscribe()
   }
 
 }

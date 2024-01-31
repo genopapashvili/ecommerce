@@ -14,7 +14,7 @@ export type TokenPayload = {
 
 export type TokenResponse = {
   token: string,
-  expirationDate?: Date
+  expirationDate?: string
 }
 export type SuccessResponse = {
   success: boolean
