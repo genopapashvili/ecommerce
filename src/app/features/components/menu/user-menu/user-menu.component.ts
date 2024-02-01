@@ -1,8 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {SessionService} from "../../../../shared/services/session.service";
-import {BasketItem, EcommerceService} from "../../../../shared/services/ecommerce.service";
-import {mergeWith, Subscription} from "rxjs";
+import {EcommerceService} from "../../../../shared/services/ecommerce.service";
+import {mergeWith, of, Subscription} from "rxjs";
 import {catchError, switchMap} from "rxjs/operators";
+import {BasketLengthResponse} from "../../../../utils/types";
 
 @Component({
   selector: 'app-user-menu',
@@ -13,7 +14,7 @@ export class UserMenuComponent implements OnInit, OnDestroy {
 
   private basketCountingSubscription!: Subscription
 
-  public basketItem: BasketItem[] = []
+  public basketLength!: number
 
   constructor(private sessionService: SessionService, private ecommerceService: EcommerceService) {
 
@@ -29,11 +30,13 @@ export class UserMenuComponent implements OnInit, OnDestroy {
 
   basketUpdateControl() {
     const observer = this.ecommerceService.basketChanges()
-      .pipe(switchMap(() => this.ecommerceService.getBasket()))
+      .pipe(switchMap(() => this.ecommerceService.getBasketLength()))
 
-    this.basketCountingSubscription = this.ecommerceService.getBasket()
-      .pipe(mergeWith(observer), catchError(() => []))
-      .subscribe(it => this.basketItem = it)
+    this.basketCountingSubscription = this.ecommerceService.getBasketLength()
+      .pipe(mergeWith(observer), catchError(() => {
+        return of(({length: 0} as BasketLengthResponse))
+      }))
+      .subscribe(it => this.basketLength = it.length)
   }
 
   ngOnDestroy() {

@@ -1,11 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
-import {Product, Profile, SuccessResponse} from "../../utils/types";
+import {BasketLengthResponse, Product, Profile, SuccessResponse} from "../../utils/types";
 import {map, Subject} from "rxjs";
 import {switchMap, tap} from "rxjs/operators";
-
-export type BasketItem = { id: number }
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +25,7 @@ export class EcommerceService {
       .pipe(map(addImagesPath))
   }
 
+
   product(param: number) {
     return this.http.get<Product>(environment.apiUrl + "/product/" + param)
       .pipe(map(addImagePath))
@@ -37,13 +36,18 @@ export class EcommerceService {
       .pipe(switchMap(() => this.getBasket()))
   }
 
+  getBasketLength() {
+    return this.http.get<BasketLengthResponse>(environment.apiUrl + "/basket-length")
+  }
+
   deleteBasketItem(id: number) {
     return this.http.delete(environment.apiUrl = "/basket", {body: {id}})
       .pipe(tap((it) => this.basketSubject.next(it)))
   }
 
   getBasket() {
-    return this.http.get<BasketItem[]>(environment.apiUrl + "/basket", {headers: {dsd: "Abc"}})
+    return this.http.get<Product[]>(environment.apiUrl + "/basket")
+      .pipe(map(addImagesPath))
   }
 
   addToBasket(product: Product) {

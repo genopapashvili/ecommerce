@@ -20,3 +20,11 @@
   width: 25rem;
   color: #333;
 }
+
+
+.basket-checkbox{
+  margin: auto 10px auto 10px;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+}

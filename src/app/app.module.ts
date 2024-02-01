@@ -44,6 +44,7 @@ import {FooterComponent} from './features/components/footer/footer.component';
 import {AboutComponent} from './features/components/about/about.component';
 import {cssHomeAlt} from "@ng-icons/css.gg";
 import {circumCreditCard2, circumShoppingBasket} from "@ng-icons/circum-icons";
+import { BasketCardComponent } from './features/components/basket/basket-card/basket-card.component';
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import {circumCreditCard2, circumShoppingBasket} from "@ng-icons/circum-icons";
     AuthFormContainerComponent,
     CertificationComponent,
     FooterComponent,
-    AboutComponent
+    AboutComponent,
+    BasketCardComponent
   ],
   imports: [
     HttpClientModule,

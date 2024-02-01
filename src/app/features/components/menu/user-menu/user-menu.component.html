@@ -7,7 +7,7 @@
   </li>
   <li>
     <a routerLink="/basket">
-      <span *ngIf="basketItem && basketItem.length > 0" class="items-quantity">{{basketItem.length}}</span>
+      <span *ngIf="basketLength" class="items-quantity">{{basketLength}}</span>
       <ng-icon name="circumShoppingBasket" color="#777" size="28px"></ng-icon>
       <span>Basket</span>
     </a>

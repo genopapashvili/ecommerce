@@ -8,7 +8,7 @@ module.exports = {
       lastName: "Papashvili",
       birthDate: "04-29-1985",
       basket: [{
-        id: 3
+        id: 5
       }]
     }
   ]

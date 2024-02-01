@@ -19,6 +19,8 @@ const sessionMap = new Map();
 const clarificationMap = new Map();
 
 
+
+
 app.use(express.json());
 app.use(cors(corsOptions));
 app.use("/assets", express.static('server/assets'));
@@ -105,12 +107,24 @@ app.post('/basket', (req, res) => {
 app.get('/basket', (req, res) => {
   try {
     const user = getUser(req)
-    res.send(user.basket)
+    res.send(user.basket.map(it => products.find(p => p.id === it.id)))
   } catch (e) {
     res.status(401)
     res.send({error: e.message});
   }
 })
+
+app.get('/basket-length', (req, res) => {
+  try {
+    const user = getUser(req)
+    res.send({length: user.basket.length})
+  } catch (e) {
+    res.status(401)
+    res.send({error: e.message});
+  }
+})
+
+
 
 app.get('/categories', (req, res) => {
   res.send(Array.from(new Set(products.map(it => it.category))))

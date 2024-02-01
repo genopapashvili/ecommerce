@@ -20,6 +20,10 @@ export type SuccessResponse = {
   success: boolean
 }
 
+export type BasketLengthResponse = {
+  length: number
+}
+
 export type ErrorResponse = {
   error: string
 }

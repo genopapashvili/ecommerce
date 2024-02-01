@@ -1,0 +1,9 @@
+
+.basket-card img{
+  max-height: 19rem !important;
+  max-width: 20rem;
+}
+
+.basket-card{
+  height: 20rem;
+}
