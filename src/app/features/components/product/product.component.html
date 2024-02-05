@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-1">
+      <div class="product-images">
+        <div class="img-container">
+          <div class="img-coll" *ngFor="let image of product.images"><img class="img-list-item" [src]="image" alt="images"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-7">b</div>
+    <div class="col-sm-4">c</div>
+  </div>
+</div>
+
+
+
+
+
+<!--
+<div *ngIf="product">
+  <h3>{{product.title}}</h3>
+  <div class="product-images">
+    <div>
+      <ul>
+        <li *ngFor="let image of product.images"><img [src]="image" alt="images"></li>
+      </ul>
+    </div>
+    <div><img class="image" [src]="product.images[0]" alt="image"></div>
+  </div>
+</div>
+-->

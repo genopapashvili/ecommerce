@@ -1,0 +1,50 @@
+
+/*.product-images {
+  display: flex;
+  flex-direction: row;
+}*/
+
+.img-list-item{
+  max-width: 5rem;
+}
+
+.product-images ul {
+  list-style-type: none;
+  margin: auto;
+  padding: 0;
+}
+
+.image{
+  max-width: 45rem;
+  max-height: 45rem;
+}
+
+.img-container{
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  width: 100px;
+  overflow: auto;
+  margin: 0;
+  padding: 0;
+  scrollbar-width: none;
+}
+
+.img-coll{
+  width: 100px;
+  height: 100px;
+  margin: 0;
+  padding: 0;
+}
+
+/* Styles for smaller screens */
+@media (max-width: 768px) {  /* Adjust breakpoint as needed */
+ .img-container{
+   display: flex;
+   flex-direction: row;
+   width: auto;
+   height: 100px;
+   overflow: auto;
+   scrollbar-width: none;
+ }
+}

@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {ProductComponent} from "./shared/components/product/product.component";
+import {ProductComponent} from "./features/components/product/product.component";
 import {ShopComponent} from "./features/main/shop/shop.component";
 import {LoginComponent} from "./features/components/login/login.component";
 import {SessionGuard} from "./shared/guards/sessionGuard";
