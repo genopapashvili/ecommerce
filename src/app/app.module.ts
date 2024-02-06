@@ -42,10 +42,11 @@ import {AuthFormContainerComponent} from './shared/components/auth-form-containe
 import {CertificationComponent} from './shared/components/certification/certification.component';
 import {FooterComponent} from './features/components/footer/footer.component';
 import {AboutComponent} from './features/components/about/about.component';
-import {cssHomeAlt} from "@ng-icons/css.gg";
+import {cssDetailsMore, cssHomeAlt} from "@ng-icons/css.gg";
 import {circumCreditCard2, circumShoppingBasket} from "@ng-icons/circum-icons";
 import { BasketCardComponent } from './features/components/basket/basket-card/basket-card.component';
 import { ProfileComponent } from './features/components/profile/profile.component';
+import {bootstrapChevronCompactDown, bootstrapChevronCompactUp} from "@ng-icons/bootstrap-icons";
 
 
 @NgModule({
@@ -83,6 +84,9 @@ import { ProfileComponent } from './features/components/profile/profile.componen
   ],
 
   providers: [provideIcons({
+    bootstrapChevronCompactDown,
+    bootstrapChevronCompactUp,
+    cssDetailsMore,
     matInfo,
     circumCreditCard2,
     circumShoppingBasket,

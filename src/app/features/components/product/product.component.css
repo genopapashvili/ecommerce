@@ -5,12 +5,13 @@
 }*/
 
 .img-list-item{
-  max-width: 5rem;
+  max-height: 5rem;
 }
 
-.product-images ul {
+.img-list{
+  overflow: hidden;
   list-style-type: none;
-  margin: auto;
+  height: 20rem;
   padding: 0;
 }
 
@@ -18,33 +19,13 @@
   max-width: 45rem;
   max-height: 45rem;
 }
-
-.img-container{
-  display: flex;
-  flex-direction: column;
-  height: 500px;
-  width: 100px;
-  overflow: auto;
-  margin: 0;
-  padding: 0;
-  scrollbar-width: none;
+.arrow {
+  width: 5rem;
+  background: transparent;
+  border: 1px solid #666
 }
 
-.img-coll{
-  width: 100px;
-  height: 100px;
-  margin: 0;
-  padding: 0;
+.arrow:hover {
+  border: 1px solid #999
 }
 
-/* Styles for smaller screens */
-@media (max-width: 768px) {  /* Adjust breakpoint as needed */
- .img-container{
-   display: flex;
-   flex-direction: row;
-   width: auto;
-   height: 100px;
-   overflow: auto;
-   scrollbar-width: none;
- }
-}

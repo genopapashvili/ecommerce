@@ -1,4 +1,4 @@
-<div class="card d-flex flex-row mb-3 basket-card" (click)="onBasketCardClick($event)">
+<div class="card d-flex flex-row mb-3 basket-card">
   <div class="d-flex">
     <input (click)="onCheckboxChange($event)" [checked]="product.checked" class="basket-checkbox" type="checkbox" name="each" id="item">
   </div>
@@ -23,7 +23,7 @@
       <h4>${{product.price | number:'1.2-2' }}</h4>
       <div class="d-flex flex-row justify-content-end button-wrapper">
         <button (click)="onBasketCardClick($event)" class="btn btn-light d-flex flex-column align-items-center">
-          <ng-icon name="circumCreditCard2" color="#777" size="2rem"></ng-icon>
+          <ng-icon name="cssDetailsMore" color="#777" size="2rem"></ng-icon>
           Detials
         </button>
         <button  class="btn btn-light d-flex flex-column align-items-center button-border">

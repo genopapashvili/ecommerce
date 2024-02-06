@@ -1,19 +1,24 @@
-<div class="container-fluid">
+<div *ngIf="product" class="container-fluid mt-1">
   <div class="row">
-    <div class="col-sm-1">
-      <div class="product-images">
-        <div class="img-container">
-          <div class="img-coll" *ngFor="let image of product.images"><img class="img-list-item" [src]="image" alt="images"></div>
+    <div class="col-sm-7">
+      <div class="d-flex">
+        <div class="position-relative">
+          <button class="arrow"><ng-icon color="#666" size="1.3rem" name="bootstrapChevronCompactUp"></ng-icon></button>
+          <ul class="img-list">
+            <ng-container *ngIf="product.images">
+              <li hover class="d-flex justify-content-center" *ngFor="let image of product.images"><img class="img-list-item" [src]="image" alt="images"></li>
+            </ng-container>
+          </ul>
+          <button class="arrow"><ng-icon color="#666" size="1.3rem" name="bootstrapChevronCompactDown"></ng-icon></button>
+        </div>
+        <div class="selected-img">
+
         </div>
       </div>
     </div>
-    <div class="col-sm-7">b</div>
-    <div class="col-sm-4">c</div>
+    <div class="col-sm-5">b</div>
   </div>
 </div>
-
-
-
 
 
 <!--

@@ -28,8 +28,6 @@ export class ProductComponent implements OnInit {
           this.product = it;
         },
         error: (e) => {
-          console.error(e.message)
-
           this.router.navigate(["/products/All"])
             .then()
         }
