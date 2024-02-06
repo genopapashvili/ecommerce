@@ -31,6 +31,7 @@ export abstract class AbstractProductActivities {
 
   onSubscribersClick(event: MouseEvent) {
     event.stopPropagation();
+    // not implemented yet
   }
 
   getRates() {
