@@ -1,31 +1,44 @@
 
-/*.product-images {
-  display: flex;
-  flex-direction: row;
-}*/
-
 .img-list-item{
-  max-height: 5rem;
+  max-height: 8rem;
+  max-width: 8rem;
 }
 
 .img-list{
   overflow: hidden;
   list-style-type: none;
-  height: 20rem;
+  height: 40rem;
   padding: 0;
 }
 
-.image{
-  max-width: 45rem;
-  max-height: 45rem;
-}
 .arrow {
-  width: 5rem;
+  width: 8rem;
   background: transparent;
-  border: 1px solid #666
+  border: none;
 }
 
-.arrow:hover {
-  border: 1px solid #999
+.selected-img{
+  margin: auto;
+}
+
+.selected-img img{
+  max-width: 40rem;
+  max-height: 40rem;
+}
+
+
+.rates-wrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+
+.btn-wrapper, button{
+  color: #444
+}
+
+.btn-border{
+  border: 1px solid #666;
 }
 

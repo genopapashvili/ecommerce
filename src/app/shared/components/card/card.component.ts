@@ -1,16 +1,16 @@
 import {Component, Input} from '@angular/core';
-import {Product, Runnable} from "../../../utils/types";
+import {Product} from "../../../utils/types";
 import {EcommerceService} from "../../services/ecommerce.service";
-import {catchError} from "rxjs/operators";
 import {SessionService} from "../../services/session.service";
 import {Router} from "@angular/router";
+import {AbstractProductActivities} from "../AbstractProductActivities";
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css']
 })
-export class CardComponent {
+export class CardComponent extends AbstractProductActivities {
 
   @Input({required: true})
   public product!: Product
@@ -19,42 +19,27 @@ export class CardComponent {
   constructor(private ecommerceService: EcommerceService,
               private sessionService: SessionService,
               private router: Router) {
+    super()
   }
 
   getFirstImage() {
     return this.product.images[0]
   }
 
-  onAddItemClick(event: Event) {
-    event.stopPropagation();
-    this.executeWhenSessionIsActive(() => {
-      this.ecommerceService.addToBasket(this.product)
-        .pipe(catchError(() => []))
-        .subscribe()
-    })
+  getEcommerceService(): EcommerceService {
+    return this.ecommerceService;
   }
 
-  onBuyClick(event: Event) {
-    event.stopPropagation();
-    this.executeWhenSessionIsActive(() => {
-
-    })
+  getProduct(): Product {
+    return this.product;
   }
 
-  onSubscribersClick(event: MouseEvent) {
-    event.stopPropagation();
+  getRouter(): Router {
+    return this.router;
   }
 
-
-  getRates() {
-    return this.product.subscribers.map(it => it.rate);
+  getSessionService(): SessionService {
+    return this.sessionService;
   }
 
-  private executeWhenSessionIsActive(runnable: Runnable) {
-    if (this.sessionService.isToken()) {
-      runnable()
-    } else {
-      this.router.navigate(["/login"])
-    }
-  }
 }

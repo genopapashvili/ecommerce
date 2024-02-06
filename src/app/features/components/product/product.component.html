@@ -3,34 +3,50 @@
     <div class="col-sm-7">
       <div class="d-flex">
         <div class="position-relative">
-          <button class="arrow"><ng-icon color="#666" size="1.3rem" name="bootstrapChevronCompactUp"></ng-icon></button>
-          <ul class="img-list">
+          <button (click)="scrollUp()" class="arrow btn btn-light">
+            <ng-icon color="#666" size="1.3rem" name="bootstrapChevronCompactUp"></ng-icon>
+          </button>
+          <ul class="img-list" #imgList>
             <ng-container *ngIf="product.images">
-              <li hover class="d-flex justify-content-center" *ngFor="let image of product.images"><img class="img-list-item" [src]="image" alt="images"></li>
+              <li class="d-flex justify-content-center" *ngFor="let image of product.images">
+                <img (mouseenter)="onImageHover(image)" class="img-list-item" [src]="image" alt="images"></li>
             </ng-container>
           </ul>
-          <button class="arrow"><ng-icon color="#666" size="1.3rem" name="bootstrapChevronCompactDown"></ng-icon></button>
+          <button (click)="scrollDown()" class="arrow  btn btn-light">
+            <ng-icon color="#666" size="1.3rem" name="bootstrapChevronCompactDown"></ng-icon>
+          </button>
         </div>
         <div class="selected-img">
-
+          <img [src]="selectedImage" alt="image">
         </div>
       </div>
     </div>
-    <div class="col-sm-5">b</div>
-  </div>
-</div>
-
-
-<!--
-<div *ngIf="product">
-  <h3>{{product.title}}</h3>
-  <div class="product-images">
-    <div>
-      <ul>
-        <li *ngFor="let image of product.images"><img [src]="image" alt="images"></li>
-      </ul>
+    <div class="col-sm-5">
+      <h3>{{product.title}}</h3>
+      <h5>${{product.price}}</h5>
+      <app-rate [rates]="getRates()"></app-rate>
+      <div class="mt-5 btn-wrapper d-flex justify-content-start">
+        <button (click)="onAddItemClick($event)"
+                class="m-1 btn btn-outline-light d-flex flex-column align-items-center custom-btn-click">
+          <ng-icon name="circumShoppingBasket" color="#777" size="2rem"></ng-icon>
+          Add to Basket
+        </button>
+        <button (click)="onBuyClick($event)"
+                class="m-1 btn-border btn btn-outline-light d-flex flex-column align-items-center">
+          <ng-icon name="circumCreditCard2" color="#777" size="2rem"></ng-icon>
+          BUY NOW
+        </button>
+      </div>
     </div>
-    <div><img class="image" [src]="product.images[0]" alt="image"></div>
+  </div>
+  <div *ngIf="product.subscribers" id="subscribers">
+    <label for="subscribers"><h3>Subscribers</h3></label>
+    <ul>
+      <li *ngFor="let subscriber of product.subscribers">
+        <h6>{{subscriber.fullName}}</h6>
+        <app-rate [rates]="[subscriber.rate]"></app-rate>
+        <p>{{subscriber.comment}}</p>
+      </li>
+    </ul>
   </div>
 </div>
--->

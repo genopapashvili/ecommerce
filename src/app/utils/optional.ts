@@ -42,6 +42,21 @@ export class Optional<T> {
     return is(this.value) ? this.value : typeof input === "function" ? input() : input;
   }
 
+  public orElseUndefined() {
+    if (is(this.value)) {
+      return this.value
+    }
+
+    return undefined;
+  }
+
+  public orElseNull() {
+    if (is(this.value)) {
+      return this.value
+    }
+
+    return null;
+  }
 
   public orElseThrow<E extends Error>(error?: Supplier<E> | E): T {
     if (is(this.value)) {
