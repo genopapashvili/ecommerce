@@ -28,7 +28,7 @@ import {RateComponent} from './shared/components/rate/rate.component';
 import {matShopifyOutline, matStarOutline} from "@ng-icons/material-icons/outline";
 import {CardComponent} from './shared/components/card/card.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import {ProductComponent} from './shared/components/product/product.component';
+import {ProductComponent} from './features/components/product/product.component';
 import {LoginComponent} from './features/components/login/login.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {InspectDirective} from './shared/directives/inspect.directive';

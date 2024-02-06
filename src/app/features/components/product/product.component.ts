@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {EcommerceService} from "../../services/ecommerce.service";
+import {EcommerceService} from "../../../shared/services/ecommerce.service";
 import {Product, ProductParam} from "../../../utils/types";
 import {map, switchMap} from "rxjs";
 
