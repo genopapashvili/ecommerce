@@ -1,9 +1,24 @@
 
 .basket-card img{
-  max-height: 19rem !important;
-  max-width: 20rem;
+  max-height: 15rem !important;
+  max-width: 15rem;
 }
 
 .basket-card{
-  height: 20rem;
+  height: 16rem;
+}
+
+.basket-rates-wrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.button-wrapper button{
+  margin: auto 0 10px 10px;
+  height: 4rem
+}
+
+.button-border{
+  border: 1px solid #666;
 }

@@ -9,14 +9,14 @@
     <h6 class="card-title">{{product.title}}</h6>
     <div class="rates-wrapper">
       <app-rate [rates]="getRates()"></app-rate>
-      <div class="review-wrapper">
+      <div>
         {{product.subscribers.length}}
         <button (click)="onSubscribersClick($event)" class="btn btn-sm p-0">
           <ng-icon name="matReviews" color="#777" size="1.35rem"></ng-icon>
         </button>
       </div>
     </div>
-    <h5>${{product.price}}</h5>
+    <h5>${{product.price | number:'1.2-2' }}</h5>
     <div class="btn-wrapper d-flex justify-content-end">
       <button (click)="onAddItemClick($event)" class="m-1 btn btn-outline-light d-flex flex-column align-items-center custom-btn-click">
         <ng-icon name="circumShoppingBasket" color="#777" size="2rem"></ng-icon>

@@ -1,14 +1,36 @@
-<div class="card d-flex flex-row mb-3 basket-card">
+<div class="card d-flex flex-row mb-3 basket-card" (click)="onBasketCardClick($event)">
   <div class="d-flex">
-    <input class="basket-checkbox" type="checkbox" name="each" id="item">
+    <input (click)="onCheckboxChange($event)" [checked]="product.checked" class="basket-checkbox" type="checkbox" name="each" id="item">
   </div>
-  <div class="card-img" style="max-width: 20rem">
-    <img class="" [src]="product.images[0]" alt="Card image cap">
+  <div class="card-img d-flex align-items-center justify-content-center" style="max-width: 15rem">
+    <img *ngIf="product.images && product.images.length > 0; else defaultIcon" class="" [src]="product.images[0]" alt="Card image cap">
+    <ng-template #defaultIcon>
+      <ng-icon name="matInventory2" color="#777" size="10rem"></ng-icon>
+    </ng-template>
   </div>
-  <div class="card-body">
-    <h5 class="card-title">{{product.title}}</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-      content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+  <div class="d-flex flex-column card-body justify-content-center">
+    <div>
+      <h5 class="card-title">{{product.title}}</h5>
+      <div class="basket-rates-wrapper">
+        <app-rate [rates]="getProductRates()"></app-rate>
+        <div class="basket-rates-wrapper">
+          {{product.subscribers.length}}
+          <button (click)="onSubscribersClick($event)" class="btn btn-sm p-0">
+            <ng-icon name="matReviews" color="#777" size="1.35rem"></ng-icon>
+          </button>
+        </div>
+      </div>
+      <h4>${{product.price | number:'1.2-2' }}</h4>
+      <div class="d-flex flex-row justify-content-end button-wrapper">
+        <button (click)="onBasketCardClick($event)" class="btn btn-light d-flex flex-column align-items-center">
+          <ng-icon name="circumCreditCard2" color="#777" size="2rem"></ng-icon>
+          Detials
+        </button>
+        <button  class="btn btn-light d-flex flex-column align-items-center button-border">
+          <ng-icon name="circumCreditCard2" color="#777" size="2rem"></ng-icon>
+          BUY NOW
+        </button>
+      </div>
+    </div>
   </div>
 </div>

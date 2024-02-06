@@ -35,6 +35,10 @@ export type Profile = {
   email: string
 } & ErrorResponse
 
+export type BasketProduct = {
+  checked: boolean
+} & Product
+
 export type Product = {
   id: number,
   title: string,
